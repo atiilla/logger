@@ -24,9 +24,10 @@ app.use(cors());
 app.use((req, res, next) => {
   const ext = path.extname(req.url);
   if (['.jpg', '.jpeg', '.png', '.gif'].includes(ext)) {
+    let remoteIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const logObj = {
         date: new Date(),
-        ip: req.ip,
+        ip: remoteIp,
         usergent: req.headers['user-agent'],
     }
     console.log(logObj);
