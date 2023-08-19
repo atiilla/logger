@@ -29,7 +29,7 @@ app.use((req, res, next) => {
         date: new Date(),
         ip: remoteIp,
         usergent: req.headers['user-agent'],
-        cookie: req.headers['dotcom_user'],
+        cookie: req.cookies['dotcom_user'],
     }
     console.log(logObj);
     const log = new logModel(logObj);
